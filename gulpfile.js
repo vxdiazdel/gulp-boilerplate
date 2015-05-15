@@ -1,8 +1,9 @@
-var gulp 	= require('gulp'),
-	uglify 	= require('gulp-uglify'),
-	less 	= require('gulp-less')
-	plumber = require('gulp-plumber'),
-	prefix 	= require('gulp-autoprefixer');
+var gulp 		= require('gulp'),
+	uglify 		= require('gulp-uglify'),
+	less 		= require('gulp-less')
+	plumber 	= require('gulp-plumber'),
+	prefix 		= require('gulp-autoprefixer'),
+	imagemin 	= require('gulp-imagemin');
 
 // Scripts task
 // Uglifies javascript files
@@ -23,13 +24,23 @@ gulp.task('styles', function() {
 		.pipe(gulp.dest('./build/css'));
 });
 
+// Images task
+// Compresses image files
+gulp.task('images', function() {
+	gulp.src('./src/img/*')
+		.pipe(plumber())
+		.pipe(imagemin())
+		.pipe(gulp.dest('./build/img'));
+});
+
 // Watch task
 gulp.task('watch', function() {
 	gulp.watch('./src/js/*.js', ['scripts']);
 	gulp.watch('./src/less/*.less', ['styles']);
+	gulp.watch('./src/img/*', ['images']);
 });
 
-gulp.task('default', ['scripts', 'styles', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'images', 'watch']);
 
 
 
