@@ -1,2 +1,2 @@
 # gulp-boilerplate
-Boilerplate using Gulp and LESS
+Boilerplate using Gulp, LESS, and Bootstrap
