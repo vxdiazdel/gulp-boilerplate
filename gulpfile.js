@@ -35,8 +35,8 @@ gulp.task('images', function() {
 
 // Watch task
 gulp.task('watch', function() {
-	gulp.watch('./src/js/*.js', ['scripts']);
-	gulp.watch('./src/less/*.less', ['styles']);
+	gulp.watch('./src/js/**/.js', ['scripts']);
+	gulp.watch('./src/less/**/.less', ['styles']);
 	gulp.watch('./src/img/*', ['images']);
 });
 
